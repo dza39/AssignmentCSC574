@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate Total Cost</title>
+    <script>
+        function calculateTotal() {
+            // Get the first selected product and its price
+            const productSelect1 = document.getElementById('product1');
+            const selectedProduct1 = productSelect1.options[productSelect1.selectedIndex].value;
+            const pricePerUnit1 = parseFloat(productSelect1.options[productSelect1.selectedIndex].getAttribute('data-price'));
+            
+            // Get the quantity for the first product
+            const quantity1 = parseInt(document.getElementById('quantity1').value) || 0;
+
+            // Get the second selected product and its price
+            const productSelect2 = document.getElementById('product2');
+            const selectedProduct2 = productSelect2.options[productSelect2.selectedIndex].value;
+            const pricePerUnit2 = parseFloat(productSelect2.options[productSelect2.selectedIndex].getAttribute('data-price'));
+            
+            // Get the quantity for the second product
+            const quantity2 = parseInt(document.getElementById('quantity2').value) || 0;
+
+            // Calculate total cost
+            const totalCost = (pricePerUnit1 * quantity1) + (pricePerUnit2 * quantity2);
+            
+            // Display the total cost
+            document.getElementById('totalCost').innerText = 'Total Cost: RM ' + totalCost.toFixed(2);
+        }
+    </script>
+</head>
+<body>
+<div>
+    <h1>Select Products</h1>
+    <link rel="stylesheet" href="style.css">
+    
+    <h3>Product 1</h3>
+
+    <label for="product1">Product 1:</label>
+    <select id="product1">
+        <option value="keyboard" data-price="20">Keyboard - RM 20</option>
+        <option value="mouse" data-price="9">Mouse - RM 9</option>
+        <option value="speaker" data-price="13">Speaker - RM 13</option>
+        <option value="monitor" data-price="27">Monitor - RM 27</option>
+    </select>
+    
+    <br><br>
+    
+    <label for="quantity1">Quantity:</label>
+    <input type="number" id="quantity1" value="1" min="1">
+    
+    <h3>Product 2</h3>
+    
+    <label for="product2">Product 2:</label>
+    <select id="product2">
+        <option value="keyboard" data-price="20">Keyboard - RM 20</option>
+        <option value="mouse" data-price="9">Mouse - RM 9</option>
+        <option value="speaker" data-price="13">Speaker - RM 13</option>
+        <option value="monitor" data-price="27">Monitor - RM 27</option>
+    </select>
+    
+    <br><br>
+    
+    <label for="quantity2">Quantity:</label>
+    <input type="number" id="quantity2" value="1" min="1">
+    
+    <button onclick="calculateTotal()">Calculate Total</button>
+    
+    <h2 id="totalCost">Total Cost: RM 0.00</h2>
+</div>
+</body>
+</html>
